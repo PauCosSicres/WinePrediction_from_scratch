@@ -25,18 +25,19 @@ class LogisticReg:
         self.weights -= lr* dw
         self.bias -= lr* db
         
-    def fit(self, X, Y, lr= 0.01, n_iter= 100):
+    def fit(self, X, Y, lr= 0.01, n_iter= 500):
         for i in range(n_iter): 
             z = X @ self.weights + self.bias # @ is dot product
             y_pred = self.sigmoid(z)
             loss = self.log_loss(y_pred, Y)
-            accuracy = np.mean(y_pred == Y)
-            if i % 25 == 0:
+            y_pred_class = (y_pred >= 0.5).astype(int)
+            accuracy = np.mean(y_pred_class == Y)
+            if i % 50 == 0:
                 print(f"Iteration: {i} - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}")
-            if loss < 0.001:
-                break
         
             self.gradient_descent(X, Y, y_pred, loss, lr)
+
+        print(f"Training Results - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}")
 
     def predict(self, X, threshold = 0.5):
         z = X @ self.weights + self.bias

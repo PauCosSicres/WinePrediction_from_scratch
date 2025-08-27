@@ -1,2 +1,5 @@
 numpy
 pandas
+matplotlib # visualization
+sklearn # metrics
+seaborn # visualization
