@@ -9,4 +9,4 @@ model.fit(X_train, y_train, 0.01, 500)
 y_pred = model.predict(X_test)
 
 accuracy = np.mean(y_pred == y_test)
-print(f"Test Data Accuracy: {accuracy}%")
+print(f'Test Data Accuracy: {accuracy}%')

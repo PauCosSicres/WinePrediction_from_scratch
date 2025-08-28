@@ -15,5 +15,5 @@ accuracy = accuracy_score(y_test, y_pred)
 probs = model.predict_proba(X_test)[:, 1]
 loss = log_loss(y_test, probs)
 
-print(f"Train - Loss: {loss_train:.4f}, Accuracy: {acc_train:.4f}")
-print(f"Test  - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}")
+print(f'Train - Loss: {loss_train:.4f}, Accuracy: {acc_train:.4f}')
+print(f'Test  - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}')

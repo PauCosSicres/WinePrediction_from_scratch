@@ -10,7 +10,7 @@ class LogisticReg:
     def init_params(self, X, W= 0, B= 0):
         self.weights = np.full(X.shape[1], W, dtype= float) # change to float to avoid problems with type
         self.bias = float(B)
-        print(f"Parameters initalized with Weights: {W} and Bias: {B}")
+        print(f'Parameters initalized with Weights: {W} and Bias: {B}')
 
     def log_loss(self, y_pred, Y):
         eps = 1e-15
@@ -33,11 +33,11 @@ class LogisticReg:
             y_pred_class = (y_pred >= 0.5).astype(int)
             accuracy = np.mean(y_pred_class == Y)
             if i % 50 == 0:
-                print(f"Iteration: {i} - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}")
+                print(f'Iteration: {i} - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}')
         
             self.gradient_descent(X, Y, y_pred, loss, lr)
 
-        print(f"Training Results - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}")
+        print(f'Training Results - Loss: {loss:.4f}, Accuracy: {accuracy:.4f}')
 
     def predict(self, X, threshold = 0.5):
         z = X @ self.weights + self.bias
