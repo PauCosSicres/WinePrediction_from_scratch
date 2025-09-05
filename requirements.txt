@@ -1,5 +1,5 @@
 numpy
 pandas
 matplotlib # visualization
-sklearn # metrics
+scikit-learn # metrics
 seaborn # visualization

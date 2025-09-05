@@ -25,7 +25,7 @@ class LogisticReg:
         self.weights -= lr* dw
         self.bias -= lr* db
         
-    def fit(self, X, Y, lr= 0.01, n_iter= 500):
+    def fit(self, X, Y, lr= 0.01, n_iter= 1000):
         for i in range(n_iter): 
             z = X @ self.weights + self.bias # @ is dot product
             y_pred = self.sigmoid(z)

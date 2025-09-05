@@ -7,16 +7,17 @@ from logisticR_scratch import LogisticReg
 from data_prep import data_prep
 
 X_train, y_train, X_test, y_test = data_prep('data/processed/clean_wine.csv')
+max_iter = 1000
 
 # Scratch Model
 scratch = LogisticReg()
 scratch.init_params(X_train)
-scratch.fit(X_train, y_train, n_iter=1000)
+scratch.fit(X_train, y_train, n_iter=max_iter)
 y_pred_scratch= scratch.predict(X_test)
 y_prob_scratch = scratch.sigmoid(X_test @ scratch.weights + scratch.bias)
 
 # Library Model
-library = LogisticRegression(max_iter=1000)
+library = LogisticRegression(max_iter=max_iter)
 library.fit(X_train, y_train)
 y_pred_lib = library.predict(X_test)
 y_prob_lib= library.predict_proba(X_test)[:,1] # take 2n column
@@ -36,10 +37,10 @@ def compute_metrics(y, y_pred, y_prob):
           f'Confusion Matrix Pct:\n{np.round(confusionM*100/y_test.shape[0], 2)}')
 
 
-print('|| Model from Scratch Metrics ||\n')
+print('\n|| Model from Scratch Metrics ||\n')
 compute_metrics(y_test, y_pred_scratch, y_prob_scratch)
 
-print('|| Model from Library Metrics ||\n')
+print('\n|| Model from Library Metrics ||\n')
 compute_metrics(y_test, y_pred_lib, y_prob_lib)
 
 # ROC Curve
